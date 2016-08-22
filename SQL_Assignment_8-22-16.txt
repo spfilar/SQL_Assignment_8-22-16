@@ -1,0 +1,273 @@
+Stuart Filar
+SQL Assignment - 8/22/16
+
+Create the data:
+
+#1)
+
+INSERT INTO `sql_assignment_aug22`.`teacher`
+
+(`first_name`,
+
+`last_name`,
+
+`age`,
+
+`salary`)
+
+
+VALUES
+
+('Bruce', 'Wayne', 29, 56123.47),
+
+('Adam', 'West', 87, 74125.89),
+
+('Charles', 'Bukowski', 14, 28472.66);
+
+
+
+#2)
+
+INSERT INTO `sql_assignment_aug22`.`class`
+
+(`name`,
+
+`description`,
+
+`teacher_id`)
+
+
+VALUES
+
+('Creeping 101', 'creep effectively', 1),
+
+('Defensive Speedwalking 204', 'speed walk to escape from predators', 1),
+
+('Crocheting 442','crocheting techniques for cape making', 2),
+
+('Birdhouses 301', 'create a birdhouse and then decimate it', 2),
+
+('Snow Fishtailing 200', 'fishtail your pos car', 3),
+
+('Locking Phones 307', 'completely lock your friends phones', 3);
+
+
+
+#3)
+
+INSERT INTO `sql_assignment_aug22`.`student`
+
+(`first_name`,
+
+`last_name`,
+
+`grade`,
+
+`gpa`)
+
+
+VALUES
+
+('Michael','Phelps', 13, 2.658),
+
+('Katie','Ledecky', 14, 3.757),
+
+('Simone','Biles', 14, 3.469),
+
+('Ryan','Murphy', 14, 3.163),
+
+('Madeline','Dirado', 13, 3.924),
+
+('Allyson','Felix', 14, 3.023),
+
+('Nathan','Adrian', 15, 2.058),
+
+('Lilly','King', 13, 3.274),
+
+('Caeleb','Dressel', 14, 3.852),
+
+('Tianna','Bartoletta', 15, 3.999);
+
+
+
+#4)
+
+***class_id starts at 25 instead of 1***
+INSERT INTO `sql_assignment_aug22`.`class_student`
+
+(`class_id`,
+
+`student_id`)
+
+
+VALUES
+
+(25, 2),
+
+(25, 4),
+
+(25, 6),
+
+(25, 8),
+
+(25, 10),
+
+(26, 1),
+
+(26, 3),
+
+(26, 5),
+
+(26, 7),
+
+(26, 9),
+
+(27, 1),
+
+(27, 4),
+
+(27, 7),
+
+(27, 10),
+
+(27, 2),
+
+(28, 3),
+
+(28, 6),
+
+(28, 9),
+
+(28, 5),
+
+(28, 8),
+
+(29, 4),
+
+(29, 8),
+
+(29, 6),
+
+(29, 9),
+
+(29, 1),
+
+(30, 3),
+
+(30, 5),
+
+(30, 7),
+
+(30, 10),
+
+(30, 6);
+
+
+
+Query the Data
+
+#1)
+SELECT * FROM `sql_assignment_aug22`.`teacher`;
+
+
+#2)
+
+
+SELECT * FROM `sql_assignment_aug22`.`class`;
+
+
+
+#3)
+SELECT * FROM `sql_assignment_aug22`.`student`;
+
+#4)
+SELECT `class`.`class_id`,
+
+    `class`.`name`,
+
+    `class`.`description`,
+
+    `class`.`teacher_id`
+
+FROM `sql_assignment_aug22`.`class`
+WHERE teacher_id = 1;
+
+
+#5)***class_id begins at value 25, not value 1***
+SELECT `class_student`.`class_student_id`,
+
+    `class_student`.`class_id`,
+
+    `class_student`.`student_id`
+
+FROM `sql_assignment_aug22`.`class_student`
+
+WHERE class_id = 25;
+
+
+#6)
+SELECT `class_student`.`class_student_id`,
+
+    `class_student`.`class_id`,
+
+    `class_student`.`student_id`
+
+FROM `sql_assignment_aug22`.`class_student`
+
+WHERE student_id = 1;
+
+#7)
+SELECT `student`.`student_id`,
+
+    `student`.`first_name`,
+
+    `student`.`last_name`,
+
+    `student`.`grade`,
+
+    `student`.`gpa`
+
+FROM `sql_assignment_aug22`.`student`
+
+WHERE first_name = '%a';
+
+
+
+Update the Data
+
+#1)
+UPDATE `sql_assignment_aug22`.`teacher`
+
+SET
+`first_name` = 'Superman'
+
+WHERE `teacher_id` = 1;
+
+
+#2)***class_id begins at value 25, not value 1***
+UPDATE `sql_assignment_aug22`.`class`
+
+SET
+`name` = 'Underwater Basket Weaving'
+
+WHERE `class_id` = 25;
+
+
+#3) 
+UPDATE `sql_assignment_aug22`.`student`
+
+SET
+`first_name` = 'Wonder',
+
+`last_name` = 'Woman'
+
+WHERE `student_id` = 1;
+
+
+
+Delete the Data
+
+#1)
+DELETE FROM `sql_assignment_aug22`.`student`
+
+WHERE student_id = 10;
